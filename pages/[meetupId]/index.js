@@ -11,3 +11,18 @@ export default function DetailsPage() {
     />
   );
 }
+
+export async function getStaticProps(context) {
+  //fetch the data for a single meetup
+  const meetupId = context.params.meetupId;
+
+  return {
+    props: {
+      image: "https://avatars.githubusercontent.com/u/86152008?v=4",
+      id: meetupId,
+      title: "A First meetup",
+      address: "Some address 220, name city",
+      description: "This a first meetup!",
+    },
+  };
+}
