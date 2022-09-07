@@ -6,8 +6,8 @@ async function handler(req, res) {
 
     //const { title, image, address, description } = data;
 
-    client = await MongoClient.connect(
-      "mongodb+srv://fernando_futila:fernando123@cluster0.jnthl8v.mongodb.net/meetups?retryWrites=true&w=majority"
+    const client = await MongoClient.connect(
+      `mongodb+srv://${process.env.REACT_APP_MONGO_USER}:${process.env.REACT_APP_MONGO_PASSWORD}@cluster0.jnthl8v.mongodb.net/meetups?retryWrites=true&w=majority`
     );
 
     const db = client.db();
