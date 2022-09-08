@@ -1,23 +1,7 @@
+import Head from "next/head";
 import { MongoClient } from "mongodb";
 
 import MeetupList from "../components/meetups/MeetupList";
-
-const DUMMY_MEETUPS = [
-  {
-    id: "m1",
-    title: "A First meetup",
-    image: "https://avatars.githubusercontent.com/u/86152008?v=4",
-    address: "Some address 220, name city",
-    description: "This a first meetup!",
-  },
-  {
-    id: "m2",
-    title: "A Second meetup",
-    image: "https://avatars.githubusercontent.com/u/86152008?v=4",
-    address: "Some address 220, name city",
-    description: "This a second meetup!",
-  },
-];
 
 export async function getStaticProps() {
   const client = await MongoClient.connect(
@@ -45,5 +29,16 @@ export async function getStaticProps() {
 }
 
 export default function HomePage(props) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <>
+      <Head>
+        <title>React Meetups</title>
+        <meta
+          name="description"
+          content="Browse a huge list of highly active React meetups!"
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </>
+  );
 }
